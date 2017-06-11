@@ -14,7 +14,7 @@ var config = {
   module : {
     loaders : [
       {
-        test : '/\.js?/',
+        test : /\.js?/,
         include : SRC_DIR,
         loader : 'babel-loader',
         query : {
