@@ -25,6 +25,13 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        contentBase: DIST_DIR,
+        compress: true,
+        port: 8080,
+        stats: 'errors-only',
+        open : true
+    },
     plugins: [
         new HtmlWebpackPlugin({
             title: "My webpack practise",
