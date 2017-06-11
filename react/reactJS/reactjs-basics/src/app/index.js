@@ -5,6 +5,21 @@ import { Home } from "./components/Home";
 
 class App extends React.Component{
   render() {
+
+    let user = {
+      name : "Karan",
+      hobbies : ["Sports", "Reading"]
+    };
+
+    let getUser = function(){
+      let user = {
+        name : "Karan",
+        hobbies : ["Sports", "Reading"]
+      };
+
+      return user
+    }
+
     return (
       <div className="container">
         <div className="row">
@@ -14,7 +29,9 @@ class App extends React.Component{
         </div>
         <div className="row">
           <div className="col-xs-10 col-xs-offset-1">
-            <Home/>
+            <Home name={ "Max" } age={ 18 } user={ user }>
+              <p>This is a paragraph.</p>
+            </Home>
           </div>
         </div>
       </div>
