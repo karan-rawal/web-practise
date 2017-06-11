@@ -22,6 +22,11 @@ module.exports = {
                     use: ["css-loader", "sass-loader"],
                     publicPath: '/dist'
                 })
+            },
+            {
+                test: /.js$/,
+                use: ['babel-loader'],
+                exclude: /node_modules/
             }
         ]
     },
@@ -39,7 +44,7 @@ module.exports = {
                 collapseWhitespace: false
             },
             hash: true,
-            template: SRC_DIR + "/index.ejs"
+            template: SRC_DIR + "/index.html"
         }),
         new ExtractTextPlugin({
             filename : "styles.css",

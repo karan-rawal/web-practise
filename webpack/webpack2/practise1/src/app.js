@@ -1,3 +1,12 @@
-const css = require("./app.scss");
+import React from 'react';
+import ReactDom from 'react-dom';
 
-console.log("Hello from app.js!");
+class AppComponent extends React.Component{
+    render(){
+        return (
+            <div>Hello ReactJS</div>
+        );
+    }
+}
+
+ReactDom.render(<AppComponent/>, document.getElementById('root'));
