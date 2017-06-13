@@ -9,6 +9,9 @@ var isProd = process.env.ENV == 'prod';
 var isDev = process.env.ENV == 'dev';
 
 var devPlugins = [
+    new webpack.ProvidePlugin({
+        $ : 'jquery'
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
         filename: DIR_DIST + '/index.html',
