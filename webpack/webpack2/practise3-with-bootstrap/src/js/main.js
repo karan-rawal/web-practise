@@ -8,11 +8,15 @@ require('bootstrap-sass/assets/stylesheets/_bootstrap.scss');
 class AppComponent extends React.Component{
     render(){
         return(
-            <div>
-                <p>Hello world.</p>
-                <h1>h1 asdf</h1>
-                <span className="glyphicon glyphicon-plus"></span>
-                <img src={require('../images/img.jpg')}></img>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-sm-8">
+                        <p>Col sm 8</p>
+                    </div>
+                    <div className="col-sm-4">
+                        Col sm 4
+                    </div>
+                </div>
             </div>
         );
     }
