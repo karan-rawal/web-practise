@@ -1,0 +1,13 @@
+.movie{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .movie-card{
+        .movie-actions{
+            margin-top: 6px;
+            margin-left: 10px;
+            .movie-action{
+                cursor: pointer;
+            }
+        }
+    }
+}

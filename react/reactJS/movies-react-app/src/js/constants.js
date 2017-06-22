@@ -1,0 +1,6 @@
+let CONSTANTS = {
+    ACTION_MOVIE_LIKE : "MOVIE_LIKE",
+    ACTION_MOVIE_DELETE : "MOVIE_DELETE"
+};
+
+export default CONSTANTS;
