@@ -6,11 +6,14 @@ const DIST_DIR = Path.resolve(__dirname, 'dist');
 const SRC_DIR = Path.resolve(__dirname, 'src');
 
 const config = {
-    entry: `${SRC_DIR}/main.js`,
+    entry: `${SRC_DIR}/main.jsx`,
     output: {
         filename: 'bundle.js',
         path: DIST_DIR,
         publicPath: '/',
+    },
+    resolve: {
+        extensions: ['.js', '.jsx'],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -19,6 +22,15 @@ const config = {
         }),
         new Webpack.HotModuleReplacementPlugin(),
     ],
+    module: {
+        rules: [
+            {
+                use: 'babel-loader',
+                exclude: /node_modules/,
+                test: /\.jsx?$/,
+            },
+        ],
+    },
     devServer: {
         hot: true,
         inline: true,
