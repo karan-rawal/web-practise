@@ -25,10 +25,8 @@ export function setPhotosAction(photos) {
  * @returns 
  */
 export function getPhostosAction() {
-  return (dispatch) => {
-    axios.get('https://jsonplaceholder.typicode.com/photos', {})
-      .then((response) => {
-        dispatch(setPhotosAction(response.data));
-      });
-  };
+  return dispatch => axios.get('https://jsonplaceholder.typicode.com/photos', {})
+    .then((response) => {
+      dispatch(setPhotosAction(response.data));
+    });
 }
