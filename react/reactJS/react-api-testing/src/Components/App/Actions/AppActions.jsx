@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { ACTIONS } from '../Constants';
 
 
@@ -21,14 +22,13 @@ export function setPhotosAction(photos) {
  * Get photos action creator. Will call the api.
  * 
  * @export
- * @param {any} photos 
  * @returns 
  */
-export function getPhostosAction(photos) {
-  return {
-    type: ACTIONS.GET_PHOTOS_ACTION,
-    payload: {
-      photos,
-    },
+export function getPhostosAction() {
+  return (dispatch) => {
+    axios.get('https://jsonplaceholder.typicode.com/photos', {})
+      .then((response) => {
+        dispatch(setPhotosAction(response.data));
+      });
   };
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getPhostosAction, setPhotosAction } from '../Actions/AppActions';
 import AppComponent from '../Components/AppComponent';
 
@@ -10,26 +11,49 @@ import AppComponent from '../Components/AppComponent';
  * @extends {React.Component}
  */
 class AppContainer extends React.Component {
+  constructor() {
+    super();
+    this.onGetPics = this.onGetPics.bind(this);
+  }
+
   componentWillMount() {
-    this.setState({
-      message: 'Some message',
-    });
+    this.setState({});
+  }
+
+  /**
+   * Called when get button is clicked.
+   * 
+   * @memberof AppContainer
+   */
+  onGetPics() {
+    this.props.getPhostosAction();
   }
 
   render() {
     return (
-      <AppComponent message={this.state.message} />
+      <AppComponent onGetPics={this.onGetPics} photos={this.props.photos} />
     );
   }
 }
 
+AppContainer.propTypes = {
+  photos: PropTypes.arrayOf(PropTypes.shape({
+    albumId: PropTypes.number,
+    id: PropTypes.number,
+    title: PropTypes.string,
+    url: PropTypes.string,
+    thumbnailUrl: PropTypes.string,
+  })).isRequired,
+  getPhostosAction: PropTypes.func.isRequired,
+};
+
 const mapDispatchToProps = dispatch => ({
-  getPhostosAction: (photos) => { dispatch(getPhostosAction(photos)); },
+  getPhostosAction: () => { dispatch(getPhostosAction()); },
   setPhotosAction: (photos) => { dispatch(setPhotosAction(photos)); },
 });
 
 const mapStateToProps = state => ({
-  appReducer: state.AppReducer,
+  photos: state.AppReducer.photos,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
