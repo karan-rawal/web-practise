@@ -12,5 +12,8 @@
     "eslint": "^4.7.1",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-plugin-import": "^2.7.0"
+  },
+  "dependencies": {
+    "mysql": "^2.14.1"
   }
 }
