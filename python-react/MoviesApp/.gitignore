@@ -1,0 +1,3 @@
+env
+Movies/db.sqlite3
+Movies/**/*.pyc
