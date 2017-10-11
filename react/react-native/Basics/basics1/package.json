@@ -1,0 +1,25 @@
+{
+	"name": "basics1",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"emulator": "~/AndroidSDK/tools/emulator -avd Nexus_5X_API_24",
+		"start": "concurrently \"react-native start\" \"~/AndroidSDK/tools/emulator -avd Nexus_5X_API_24\"",
+		"test": "jest",
+		"load": "react-native run-android"
+	},
+	"dependencies": {
+		"react": "16.0.0-beta.5",
+		"react-native": "0.49.3"
+	},
+	"devDependencies": {
+		"babel-jest": "21.2.0",
+		"babel-preset-react-native": "4.0.0",
+		"concurrently": "^3.5.0",
+		"jest": "21.2.1",
+		"react-test-renderer": "16.0.0-beta.5"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
+}
