@@ -307,9 +307,15 @@ add_filter('body_class', 'astrid_fullwidth_singles');
  */
 if ( function_exists('pll_register_string') ) :
 function astrid_polylang() {
-	pll_register_string('Header text', get_theme_mod('header_text'), 'Astrid');
-	pll_register_string('Header subtext', get_theme_mod('header_subtext'), 'Astrid');
-	pll_register_string('Header button', get_theme_mod('header_button'), 'Astrid');
+	// pll_register_string('Header text', get_theme_mod('header_text'), 'Astrid');
+	// pll_register_string('Header subtext', get_theme_mod('header_subtext'), 'Astrid');
+	// pll_register_string('Header button', get_theme_mod('header_button'), 'Astrid');
+	$pages = get_pages();
+    foreach ($pages as $page) {
+		$page_name = $page -> post_name;
+		pll_register_string('Header subtext', get_theme_mod('karan_header_text_'.$page_name), 'Astrid');
+		pll_register_string('Header subtext', get_theme_mod('karan_header_subtext_'.$page_name), 'Astrid');
+	}
 }
 add_action( 'admin_init', 'astrid_polylang' );
 endif;
@@ -319,16 +325,31 @@ endif;
  */
 function astrid_header_text() {
 
-	if ( !function_exists('pll_register_string') ) {
-		$header_text 		= get_theme_mod('header_text');
-		$header_subtext 	= get_theme_mod('header_subtext');
-		$header_button		= get_theme_mod('header_button');
+	$currentPage = get_page();
+	$posttitle = "Unknown";
+
+	if( is_page( get_page() )) {
+		$posttitle = $currentPage -> post_title;
 	} else {
-		$header_text 		= pll__(get_theme_mod('header_text'));
-		$header_subtext 	= pll__(get_theme_mod('header_subtext'));
-		$header_button		= pll__(get_theme_mod('header_button'));
+		$page_for_posts = get_option( 'page_for_posts' );
+		$blog_page = get_page( $page_for_posts );
+		$posttitle = $blog_page -> post_title;
 	}
-	$header_button_url	= get_theme_mod('header_button_url');
+
+	if ( !function_exists('pll_register_string') ) {
+		// $header_text 		= get_theme_mod('header_text');
+		// $header_subtext 	= get_theme_mod('header_subtext');
+		$header_text 		= get_theme_mod('karan_header_text_'.$posttitle);
+		$header_subtext 	= get_theme_mod('karan_header_subtext_'.$posttitle);
+		$header_button		= get_theme_mod('karan_header_button_'.$posttitle);
+	} else {
+		// $header_text 		= pll__(get_theme_mod('header_text'));
+		// $header_subtext 	= pll__(get_theme_mod('header_subtext'));
+		$header_text 		= pll__(get_theme_mod('karan_header_text_'.$posttitle));
+		$header_subtext 	= pll__(get_theme_mod('karan_header_subtext_'.$posttitle));
+		$header_button		= pll__(get_theme_mod('karan_header_button_'.$posttitle));
+	}
+	$header_button_url	= get_theme_mod('karan_header_button_url_'.$posttitle);
 
 	echo '<div class="header-info">
 			<div class="container">

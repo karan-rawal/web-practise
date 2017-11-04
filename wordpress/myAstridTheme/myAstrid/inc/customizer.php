@@ -86,81 +86,98 @@ function astrid_customize_register( $wp_customize ) {
         )
     );
 
-    //___Header text___//
-    $wp_customize->add_section(
-        'astrid_header_text',
-        array(
-            'title'         => __('Header text', 'astrid'),
-            'priority'      => 14,
-            'panel'         => 'astrid_header_panel', 
-        )
-    );    
-    $wp_customize->add_setting(
-        'header_text',
-        array(
-            'default' => '',
-            'sanitize_callback' => 'astrid_sanitize_text',
-            'transport'     => 'postMessage'
-        )
-    );
-    $wp_customize->add_control(
-        'header_text',
-        array(
-            'label' => __( 'Header text', 'astrid' ),
-            'section' => 'astrid_header_text',
-            'type' => 'text',
-            'priority' => 10
-        )
-    );
-    $wp_customize->add_setting(
-        'header_subtext',
-        array(
-            'default' => '',
-            'sanitize_callback' => 'astrid_sanitize_text',
-            'transport'     => 'postMessage'
-        )
-    );
-    $wp_customize->add_control(
-        'header_subtext',
-        array(
-            'label' => __( 'Header small text', 'astrid' ),
-            'section' => 'astrid_header_text',
-            'type' => 'text',
-            'priority' => 10
-        )
-    );    
-    $wp_customize->add_setting(
-        'header_button',
-        array(
-            'default' => '',
-            'sanitize_callback' => 'astrid_sanitize_text',
-        )
-    );
-    $wp_customize->add_control(
-        'header_button',
-        array(
-            'label' => __( 'Button text', 'astrid' ),
-            'section' => 'astrid_header_text',
-            'type' => 'text',
-            'priority' => 10
-        )
-    );
-    $wp_customize->add_setting(
-        'header_button_url',
-        array(
-            'default' => '',
-            'sanitize_callback' => 'esc_url_raw',
-        )
-    );
-    $wp_customize->add_control(
-        'header_button_url',
-        array(
-            'label' => __( 'Button URL', 'astrid' ),
-            'section' => 'astrid_header_text',
-            'type' => 'text',
-            'priority' => 11
-        )
-    );
+    // Add a panel for Karan's customization
+    $wp_customize->add_panel( 'karan_panel', array(
+        'priority'       => 10,
+        'capability'     => 'edit_theme_options',
+        'theme_supports' => '',
+        'title'          => __('Karan panel', 'astrid'),
+    ));
+
+    $pages = get_pages();
+    foreach ($pages as $page) {
+        $page_name = $page -> post_name;
+        // Add a section for the page.
+        $wp_customize->add_section(
+            "karan_section_".$page_name,
+            array(
+                'title'         => __($page_name, 'astrid'),
+                'priority'      => 14,
+                'panel'         => 'karan_panel', 
+            )
+        );
+        // Add setting and control for header text
+        $wp_customize->add_setting(
+            'karan_header_text_'.$page_name,
+            array(
+                'default' => '',
+                'sanitize_callback' => 'astrid_sanitize_text',
+            )
+        );
+        $wp_customize->add_control(
+            'karan_header_text_'.$page_name,
+            array(
+                'label' => __( "Header Text", 'astrid' ),
+                'section' => "karan_section_".$page_name,
+                'type' => 'text',
+                'priority' => 10
+            )
+        );
+
+        // Add setting and control for header small text
+        $wp_customize->add_setting(
+            'karan_header_subtext_'.$page_name,
+            array(
+                'default' => '',
+                'sanitize_callback' => 'astrid_sanitize_text',
+            )
+        );
+        $wp_customize->add_control(
+            'karan_header_subtext_'.$page_name,
+            array(
+                'label' => __( 'Header small text', 'astrid' ),
+                'section' => "karan_section_".$page_name,
+                'type' => 'text',
+                'priority' => 10
+            )
+        );
+        
+        // Add setting and control for header button
+        $wp_customize->add_setting(
+            'karan_header_button_'.$page_name,
+            array(
+                'default' => '',
+                'sanitize_callback' => 'astrid_sanitize_text',
+            )
+        );
+        $wp_customize->add_control(
+            'karan_header_button_'.$page_name,
+            array(
+                'label' => __( 'Button text', 'astrid' ),
+                'section' => "karan_section_".$page_name,
+                'type' => 'text',
+                'priority' => 10
+            )
+        );
+
+        // Add setting and control for header button url
+        $wp_customize->add_setting(
+            'karan_header_button_url_'.$page_name,
+            array(
+                'default' => '',
+                'sanitize_callback' => 'esc_url_raw',
+            )
+        );
+        $wp_customize->add_control(
+            'karan_header_button_url_'.$page_name,
+            array(
+                'label' => __( 'Button URL', 'astrid' ),
+                'section' => "karan_section_".$page_name,
+                'type' => 'text',
+                'priority' => 11
+            )
+        );
+    }
 
     //___Mobile header image___//
     $wp_customize->add_setting(
