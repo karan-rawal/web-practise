@@ -271,6 +271,10 @@ function astrid_has_header() {
 		$single_toggle = false;
 	}
 
+	if(!karan_has_header()) {
+		return;
+	}
+
 	if ($single_toggle != '') {
 		return 'has-single';
 	} else {
@@ -282,6 +286,23 @@ function astrid_has_header() {
 			return 'has-video';
 		}		
 	}
+}
+
+function karan_has_header() {
+
+	$currentPage = get_page();
+	$posttitle = "Unknown";
+
+	if( is_page( get_page() )) {
+		$posttitle = $currentPage -> post_title;
+	} else {
+		$page_for_posts = get_option( 'page_for_posts' );
+		$blog_page = get_page( $page_for_posts );
+		$posttitle = $blog_page -> post_title;
+	}
+
+	$hasHeader = get_theme_mod( 'karan_header_visibility_'.$posttitle, false );
+	return $hasHeader;
 }
 
 /**

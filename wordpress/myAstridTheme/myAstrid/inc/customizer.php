@@ -177,6 +177,42 @@ function astrid_customize_register( $wp_customize ) {
                 'priority' => 11
             )
         );
+
+        // Add setting and control for header button url
+        $wp_customize->add_setting(
+            'karan_header_button_url_'.$page_name,
+            array(
+                'default' => '',
+                'sanitize_callback' => 'esc_url_raw',
+            )
+        );
+        $wp_customize->add_control(
+            'karan_header_button_url_'.$page_name,
+            array(
+                'label' => __( 'Button URL', 'astrid' ),
+                'section' => "karan_section_".$page_name,
+                'type' => 'text',
+                'priority' => 11
+            )
+        );
+        
+        //Front page
+        $wp_customize->add_setting(
+            'karan_header_visibility_'.$page_name,
+            array(
+                'default'           => false,
+                'sanitize_callback' => 'esc_url_raw',
+            )
+        );
+        $wp_customize->add_control(
+            'karan_header_visibility_'.$page_name,
+            array(
+                'label'      => __( 'Show header', 'documentation' ),
+                'section'    => "karan_section_".$page_name,
+                'type'       => 'checkbox',
+                'priority' => 12,
+            )
+        );
     }
 
     //___Mobile header image___//
