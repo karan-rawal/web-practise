@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers jsx:babel-core/register --require test/jsdom.config.jsx -w src/**/*.spec.jsx"
+    "test": "mocha --compilers jsx:babel-core/register --require test/test.setup.js -w src/**/*.test.jsx"
   },
   "author": "",
   "license": "ISC",
