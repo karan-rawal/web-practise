@@ -65,6 +65,10 @@ const config = {
       filename: `${DIST_DIR}/index.html`,
     }),
     new ExtractTextPlugin('styles/style.css'),
+    new Webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    }),
   ],
 };
 

@@ -5,10 +5,11 @@ const sampleImage = require('../../../assets/images/sample.png');
 
 const App = () => (
   <div
-    className="app"
+    className="container app"
     test="asdf"
     >
     hello world
+    <span className="glyphicon glyphicon-plus" />
     <img
       alt="sample"
       src={sampleImage}
