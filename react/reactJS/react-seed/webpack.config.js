@@ -48,6 +48,14 @@ const config = {
           fallback: 'style-loader',
         }),
       },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        use: 'file-loader?name=[name]-[hash].[ext]&outputPath=assets/fonts/&publicPath=../',
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        use: 'file-loader?name=[name]-[hash].[ext]&outputPath=assets/images/&publicPath=../',
+      },
     ],
   },
   plugins: [
