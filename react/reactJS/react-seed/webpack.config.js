@@ -2,6 +2,7 @@
 const Path = require('path');
 const Webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const DIST_DIR = Path.resolve(__dirname, 'dist');
 const SRC_DIR = Path.resolve(__dirname, 'src');
@@ -26,9 +27,26 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: [/\.jsx$/, /\.js$/],
         use: ['babel-loader'],
-        exclude: /node_modules/,
+        exclude: [/node_modules/],
+      },
+      {
+        test: /\.(css|scss)$/,
+        use: ExtractTextPlugin.extract({
+          use: [{
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          }, {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          }],
+          fallback: 'style-loader',
+        }),
       },
     ],
   },
@@ -38,6 +56,7 @@ const config = {
       template: `${SRC_DIR}/index.html`,
       filename: `${DIST_DIR}/index.html`,
     }),
+    new ExtractTextPlugin('css/style.css'),
   ],
 };
 
