@@ -4,8 +4,9 @@
   "description": "React seed project with sass, react+redux, jest, enzyme, eslint",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "start": "webpack && webpack-dev-server"
+    "test": "eslint src/scripts/**/*.jsx && jest",
+    "build": "eslint src/scripts/**/*.jsx && jest && webpack --config webpack.build.config.js --progress --display minimal",
+    "start": "webpack --progress --display minimal && webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +30,7 @@
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
+    "uglifyjs-webpack-plugin": "^1.1.1",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   },
