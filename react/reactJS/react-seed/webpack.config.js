@@ -8,9 +8,9 @@ const DIST_DIR = Path.resolve(__dirname, 'dist');
 const SRC_DIR = Path.resolve(__dirname, 'src');
 
 const config = {
-  entry: `${SRC_DIR}/js/index.jsx`,
+  entry: `${SRC_DIR}/scripts/index.jsx`,
   output: {
-    filename: 'js/bundle.js',
+    filename: 'scripts/bundle.js',
     path: DIST_DIR,
     publicPath: DIST_DIR,
   },
@@ -64,7 +64,7 @@ const config = {
       template: `${SRC_DIR}/index.html`,
       filename: `${DIST_DIR}/index.html`,
     }),
-    new ExtractTextPlugin('css/style.css'),
+    new ExtractTextPlugin('styles/style.css'),
   ],
 };
 

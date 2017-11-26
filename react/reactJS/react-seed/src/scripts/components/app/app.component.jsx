@@ -1,5 +1,5 @@
 import React from 'react';
-import './app.component.scss';
+import '../../../styles/app.component.scss';
 
 const sampleImage = require('../../../assets/images/sample.png');
 
