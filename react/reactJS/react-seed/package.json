@@ -42,7 +42,8 @@
       "<rootDir>/test/tests.config.js"
     ],
     "moduleNameMapper": {
-      "\\.(scss|css)$": "<rootDir>/test/scss-transformer.js"
+      "\\.(scss|css)$": "<rootDir>/test/scss-transformer.js",
+      "\\.(eot|ttf|woff|woff2|jpg|png|svg)$": "<rootDir>/test/assets-transformer.js"
     }
   }
 }
