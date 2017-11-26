@@ -11,5 +11,6 @@ module.exports = {
       describe: true,
       it: true,
       window: true,
+      expect: true
     }
 };
