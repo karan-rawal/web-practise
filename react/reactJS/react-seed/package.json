@@ -6,7 +6,8 @@
   "scripts": {
     "test": "eslint src/scripts/**/*.jsx && jest",
     "build": "eslint src/scripts/**/*.jsx && jest && webpack --config webpack.build.config.js --progress --display minimal",
-    "start": "webpack --progress --display minimal && webpack-dev-server"
+    "start": "webpack --progress --display minimal && webpack-dev-server",
+    "build-start": "webpack-dev-server --config webpack.build.config.js"
   },
   "author": "",
   "license": "ISC",

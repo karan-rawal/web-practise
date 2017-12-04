@@ -14,12 +14,18 @@ const SRC_DIR = Path.resolve(__dirname, 'src');
 const config = {
   entry: `${SRC_DIR}/scripts/index.jsx`,
   output: {
-    filename: 'scripts/bundle.js',
+    filename: 'scripts/[hash].js',
     path: DIST_DIR,
-    publicPath: DIST_DIR,
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+  },
+  devServer: {
+    contentBase: DIST_DIR,
+    hot: true,
+    inline: true,
+    open: true,
   },
   module: {
     rules: [
@@ -29,7 +35,7 @@ const config = {
         exclude: [/node_modules/],
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.(css|scss|sass)$/,
         use: ExtractTextPlugin.extract({
           use: [{
             loader: 'css-loader',
@@ -45,7 +51,7 @@ const config = {
         use: 'file-loader?name=[hash].[ext]&outputPath=assets/fonts/&publicPath=../',
       },
       {
-        test: /\.(jpg|png|svg)$/,
+        test: /\.(jpg|png|svg|gif)$/,
         use: 'file-loader?name=[hash].[ext]&outputPath=assets/images/&publicPath=../',
       },
     ],
@@ -56,12 +62,20 @@ const config = {
       template: `${SRC_DIR}/index.html`,
       filename: `${DIST_DIR}/index.html`,
     }),
-    new ExtractTextPlugin('styles/style.css'),
+    new ExtractTextPlugin('styles/style.min.css'),
     new Webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
     }),
+    new Webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new Webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'scripts/[hash]-common.js',
+    }),
     new UglifyJsPlugin(),
+    new Webpack.optimize.AggressiveMergingPlugin(),
   ],
 };
 
