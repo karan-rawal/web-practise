@@ -5,6 +5,11 @@ export default class UserController extends BaseController {
     get(req: e.Request, res: e.Response, next: e.NextFunction) {
         res.end("Response from UserController");
     }
+
+    registerUser(req: e.Request, res: e.Response, next: e.NextFunction) {
+        res.end("API works.");
+    }
+
     post(req: e.Request, res: e.Response, next: e.NextFunction) {
         throw new Error("Method not implemented.");
     }

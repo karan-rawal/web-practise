@@ -17,10 +17,6 @@ class App {
         this.application.listen(this.port, this.host, () => {
             console.log(`Application started at 2 http://${this.host}:${this.port}`);
         });
-
-        this.application.get('/users', () => {
-            console.log("Say hello");
-        });
     }
 }
 
