@@ -2,6 +2,7 @@ import express = require('express');
 import bodyParser = require('body-parser');
 import mongoose = require('mongoose');
 import UserRoutes from './routes/UserRoutes';
+import Logger from './utils/Logger';
 
 class App {
     private application: express.Application;
@@ -26,9 +27,9 @@ class App {
     private connectDatabase() {
         mongoose.connect("mongodb://localhost:27017/ExpressTypescriptNode", (err) => {
             if(err) {
-                console.error("Database connection failed");
+                Logger.error("Database connection failed.");
             } else {
-                console.log("Databse connected. Starting the application now!");
+                Logger.info("Database connection successful. Starting the application now!");
                 this.startApplication();
             }
         });
@@ -36,7 +37,7 @@ class App {
 
     private startApplication() {
         this.application.listen(this.port, this.host, () => {
-            console.log(`Application started at http://${this.host}:${this.port}`);
+            Logger.info(`Application started at http://${this.host}:${this.port}`);
         });
     }
 
