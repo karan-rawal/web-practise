@@ -7,7 +7,9 @@ export default class UserController extends BaseController {
     }
 
     registerUser(req: e.Request, res: e.Response, next: e.NextFunction) {
-        res.end("API works.");
+        res.status(200).json({
+            message: "User Registration Successful.",
+        });
     }
 
     post(req: e.Request, res: e.Response, next: e.NextFunction) {
