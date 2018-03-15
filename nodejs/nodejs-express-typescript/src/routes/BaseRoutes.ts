@@ -1,11 +1,11 @@
 import { Router } from "express";
-import BaseController from "../controllers/BaseController";
+import IController from "../controllers/IController";
 
 export default abstract class BaseRoutes {
     private _router: Router;
-    private _controller: BaseController;
+    private _controller: IController;
 
-    constructor(router: Router, controller: BaseController) {
+    constructor(router: Router, controller: IController) {
         this._router = router;
         this._controller = controller;
     }
@@ -14,11 +14,11 @@ export default abstract class BaseRoutes {
         return this._router;
     }
 
-    get controller(): BaseController {
+    get controller(): IController {
         return this._controller;
     }
 
-    set controller(controller: BaseController) {
+    set controller(controller: IController) {
         this._controller = controller;
     }
 

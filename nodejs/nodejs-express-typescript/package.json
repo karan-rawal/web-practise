@@ -5,7 +5,7 @@
   "main": "dist/App.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -e ts --exec \"npm run build\"",
+    "start": "tsc-watch --onSuccess 'node ./dist/App.js' --onFailure 'echo Beep! Compilation Failed'",
     "build": "tsc"
   },
   "author": "",
@@ -17,7 +17,7 @@
     "@types/mongoose": "^5.0.7",
     "@types/winston": "^2.3.8",
     "concurrently": "^3.5.1",
-    "nodemon": "^1.17.1",
+    "tsc-watch": "^1.0.17",
     "typescript": "^2.7.2"
   },
   "dependencies": {
