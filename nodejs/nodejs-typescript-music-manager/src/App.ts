@@ -9,8 +9,8 @@ class App {
 
   constructor() {
     this.application = express();
-    this.setupRoutes();
     this.setupMiddleWares();
+    this.setupRoutes();
   }
 
   /**

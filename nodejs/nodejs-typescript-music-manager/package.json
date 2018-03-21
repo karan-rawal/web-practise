@@ -13,6 +13,7 @@
   "devDependencies": {
     "@types/body-parser": "^1.16.8",
     "@types/express": "^4.11.1",
+    "@types/joi": "^13.0.6",
     "@types/winston": "^2.3.8",
     "tsc-watch": "^1.0.17",
     "tslint": "^5.9.1",
@@ -22,6 +23,8 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
+    "express-validation": "^1.0.2",
+    "joi": "^13.1.2",
     "winston": "^2.4.1"
   }
 }
