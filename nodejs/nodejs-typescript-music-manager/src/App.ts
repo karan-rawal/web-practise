@@ -1,5 +1,6 @@
 import { Application } from 'express';
 import express = require('express');
+import ApiRoutes from './routes/ApiRoutes';
 import Logger from './utils/Logger';
 
 class App {
@@ -7,6 +8,7 @@ class App {
 
   constructor() {
     this.application = express();
+    this.setupRoutes();
   }
 
   /**
@@ -20,6 +22,15 @@ class App {
   public start(port: number, host: string, callback: any) {
     this.setTestRequest();
     this.application.listen(port, host, callback);
+  }
+  /**
+   * Sets up the routes.
+   *
+   * @private
+   * @memberof App
+   */
+  private setupRoutes() {
+    this.application.use('/api', new ApiRoutes()._apiRouter);
   }
 
   /**
