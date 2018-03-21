@@ -1,3 +1,4 @@
+import bodyParser = require('body-parser');
 import { Application } from 'express';
 import express = require('express');
 import ApiRoutes from './routes/ApiRoutes';
@@ -9,6 +10,7 @@ class App {
   constructor() {
     this.application = express();
     this.setupRoutes();
+    this.setupMiddleWares();
   }
 
   /**
@@ -23,6 +25,20 @@ class App {
     this.setTestRequest();
     this.application.listen(port, host, callback);
   }
+
+  /**
+   * Sets up middlewares.
+   *
+   * @private
+   * @memberof App
+   */
+  private setupMiddleWares() {
+    this.application.use(bodyParser.json());
+    this.application.use(bodyParser.urlencoded({
+      extended: true,
+    }));
+  }
+
   /**
    * Sets up the routes.
    *

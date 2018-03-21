@@ -17,6 +17,6 @@ export default class UserRoute {
   }
 
   private setupRouter() {
-    this.userRoute.get('/register', this.userController.registerUser);
+    this.userRoute.post('/register', this.userController.registerUser);
   }
 }
