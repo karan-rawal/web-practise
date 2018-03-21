@@ -1,5 +1,10 @@
 import winston = require('winston');
 
+/**
+ * A logger utility.
+ *
+ * @class Logger
+ */
 class Logger {
   public logger: winston.LoggerInstance;
   constructor() {
