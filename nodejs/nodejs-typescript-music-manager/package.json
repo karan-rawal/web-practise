@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-typescript-music-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc-watch --onSuccess 'node ./dist/App.js' --onFailure 'echo Beep! Compilation Failed'",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsc-watch": "^1.0.17",
+    "tslint": "^5.9.1",
+    "tslint-config-airbnb": "^5.8.0",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {}
+}
