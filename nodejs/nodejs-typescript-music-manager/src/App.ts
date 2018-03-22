@@ -1,6 +1,7 @@
 import bodyParser = require('body-parser');
 import { Application } from 'express';
 import express = require('express');
+import mongoose = require('mongoose');
 import ApiRoutes from './routes/ApiRoutes';
 import Logger from './utils/Logger';
 
@@ -23,7 +24,13 @@ class App {
    */
   public start(port: number, host: string, callback: any) {
     this.setTestRequest();
-    this.application.listen(port, host, callback);
+    mongoose.connect('mongodb://localhost:27017', (err) => {
+      if (err) {
+        Logger.warn('Mongodb: Connection failed!');
+        return;
+      }
+      this.application.listen(port, host, callback);
+    });
   }
 
   /**
